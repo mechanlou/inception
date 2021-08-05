@@ -1,0 +1,17 @@
+server
+{
+	listen 443 ssl;
+	listen [::]:443 ssl;
+	ssl_protocols TLSv1.2;
+	ssl_certificate_key /etc/ssl/private/server.key;
+	ssl_certificate /etc/ssl/certs/server.crt;
+
+        root /var/www/rkowalsk.42.fr/html;
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name rkowalsk.42.fr www.rkowalsk.42.fr;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+}
