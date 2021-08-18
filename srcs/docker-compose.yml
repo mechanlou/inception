@@ -7,16 +7,26 @@ services:
         ports:
             - "443:443"
         volumes:
-            - wordpress-files:/root/data
+            - wordpress-files:/var/www/wordpress
 
     wordpress:
+        environment:
+            - DB_USERNAME
+            - DB_PASSWORD
         build: wordpress/
         volumes:
             - wordpress-files:/root/data
 
+    mariadb:
+        environment:
+            - DB_USERNAME
+            - DB_PASSWORD
+        build: mariadb/
+        volumes:
+            - database:/root/database
+
 volumes:
+
     wordpress-files:
-        driver_opts:
-            type: none
-            o: bind
-            device: /home/user42/data
+
+    database:
