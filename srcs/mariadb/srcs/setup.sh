@@ -1,7 +1,10 @@
+echo "@ adding custom config file"
+#chown -R mysql:mysql /var/lib/mysql
 /etc/init.d/mysql start
-mysql -u root -e "CREATE DATABASE wordpress;"
-mysql -u root -e "CREATE USER 'wordpress'@'localhost';"
-mysql -u root -e "SET password FOR 'wordpress'@'localhost' = password('password');"
-mysql -u root -e "GRANT ALL PRIVILEGES ON wordpress.* TO 'wordpress'@'localhost' IDENTIFIED BY 'password';"
-mysql -u root -e "FLUSH PRIVILEGES;"
+echo "@ creating the database and user"
+mysql -e "CREATE DATABASE $DB_NAME;"
+mysql -e "CREATE USER '$DB_USERNAME'@'localhost' IDENTIFIED BY '$DB_PASSWORD'"
+mysql -e "GRANT ALL PRIVILEGES ON $DB_NAME.* TO '$DB_USERNAME'@'localhost' IDENTIFIED BY '$DB_PASSWORD';"
+mysql -e "FLUSH PRIVILEGES;"
+echo "done"
 sleep infinity

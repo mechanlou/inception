@@ -7,23 +7,29 @@ services:
         ports:
             - "443:443"
         volumes:
-            - wordpress-files:/var/www/wordpress
+            - wordpress-files:/var/www/rkowalsk.42.fr/
 
     wordpress:
         environment:
             - DB_USERNAME
+            - DB_NAME
             - DB_PASSWORD
         build: wordpress/
         volumes:
             - wordpress-files:/root/data
+        ports:
+                - 9000:9000
 
     mariadb:
         environment:
             - DB_USERNAME
+            - DB_NAME
             - DB_PASSWORD
         build: mariadb/
         volumes:
-            - database:/root/database
+            - database:/var/lib/mysql
+        ports:
+                - 3306:3306
 
 volumes:
 
