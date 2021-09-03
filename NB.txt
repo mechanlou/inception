@@ -5,3 +5,7 @@
 - docker container list -a
 - docker
 - datadir  = /var/lib/mysql
+admin=chef
+admin_password=123456
+user=michel
+user_password=123456
