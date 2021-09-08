@@ -1,10 +1,10 @@
 all:
 	mkdir /home/$(USER)/data || true
+	cp -r srcs/mariadb/srcs/database /home/$(USER)/data/
 	cd srcs && docker-compose up --build
 
 stop:
 	cd srcs && docker-compose down
-	#-docker volume rm srcs_wordpress-files srcs_database
 	-sudo rm -rf /home/$(USER)/data
 
 clean:
