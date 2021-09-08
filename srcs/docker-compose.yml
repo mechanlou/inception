@@ -31,17 +31,10 @@ services:
             - DB_PASSWORD
         build: mariadb/
         volumes:
-                #- /home/${USER}/data/database:/var/lib/mysql/
             - /home/${USER}/data/database:/var/lib/mysql/
-        #restart: always
+        restart: always
         networks:
             - reso
-
-volumes:
-
-    wordpress-files:
-
-    database:
 
 networks:
         reso:

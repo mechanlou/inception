@@ -4,7 +4,7 @@ all:
 
 stop:
 	cd srcs && docker-compose down
-	-docker volume rm srcs_wordpress-files srcs_database
+	#-docker volume rm srcs_wordpress-files srcs_database
 	-sudo rm -rf /home/$(USER)/data
 
 clean:
